@@ -376,7 +376,7 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
 
 
             // ISSUE #1 (likely related to issue #2)
-            // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation
+            // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation, and causes unexpected results
             // Setting to TopLeft (used in linked example code) = blank output
             // Setting to Anything else = output shows... but sometimes horizontally flipped content, sometimes yellowish, and resizing the form can cause a horizontal flip
             output.Orientation = VideoOrientation.BottomRight;
@@ -393,7 +393,7 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
             // Expression: !"unreachable"
             // https://code.videolan.org/videolan/vlc/-/blob/e19dc449339e740a579d44e81ceed72ba56914e5/src/misc/es_format.c
 
-            // the code in es_format.c is using the orientation information () from here when it throws the exception
+            // the code in es_format.c is using the orientation information (indirectly) from here when it throws the exception
             return true;
         }
         /// <summary>
