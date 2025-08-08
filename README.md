@@ -79,8 +79,8 @@ unsafe static bool UpdateOutput(IntPtr opaque, RenderConfig* config, ref OutputC
     // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation, 
     // and causes unexpected results
     // Setting to TopLeft (used in linked example code) = blank output
-    // Setting to Anything else = output shows... but sometimes horizontally flipped content, sometimes yellowish, 
-    //  and resizing the form can cause a horizontal flip
+    // Setting to Anything else = output shows... but sometimes horizontally flipped, sometimes yellowish, 
+    // and resizing the form can cause a horizontal flip
     output.Orientation = VideoOrientation.TopLeft;
 
 
