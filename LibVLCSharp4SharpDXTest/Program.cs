@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
+using LibVLCSharp.WinForms;
 using static LibVLCSharp.MediaPlayer;
 using Device = SharpDX.Direct3D11.Device;
 using Device1 = SharpDX.Direct3D11.Device1;
@@ -23,9 +24,10 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool CloseHandle(IntPtr hObject);
 
-        static Format renderFormat = Format.R8G8B8A8_UNorm;
-        static RawColor4 ColorBlack = new RawColor4(0.0f, 0.0f, 0.0f, 1.0f);
-        static bool VerticalSync = false;
+        
+        static Format _renderFormat = Format.R8G8B8A8_UNorm;
+        static RawColor4 _colorBlack = new RawColor4(0.0f, 0.0f, 0.0f, 1.0f);
+        static bool _verticalSync = false;
 
         static Form _form;
 
@@ -335,7 +337,7 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
                     Usage = ResourceUsage.Default,
                     CpuAccessFlags = CpuAccessFlags.None,
                     ArraySize = 1,
-                    Format = renderFormat,
+                    Format = _renderFormat,
                     Width = _textureWidth,
                     Height = _textureHeight,
                     OptionFlags = ResourceOptionFlags.Shared | ResourceOptionFlags.SharedNthandle,
@@ -345,7 +347,7 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
                 _textureShaderResource = new ShaderResourceView(_d3dDevice, _texture, new ShaderResourceViewDescription
                 {
                     Dimension = ShaderResourceViewDimension.Texture2D,
-                    Format = renderFormat,
+                    Format = _renderFormat,
                     Texture2D = { MipLevels = 1, MostDetailedMip = 0 }
                 });
 
@@ -360,7 +362,7 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
                 // set VLC's copy of the shared texture to the current render target on the vlc device context
                 _textureVLCRenderTarget = new RenderTargetView(_d3deviceVLC, _textureVLC, new RenderTargetViewDescription
                 {
-                    Format = renderFormat,
+                    Format = _renderFormat,
                     Dimension = RenderTargetViewDimension.Texture2D,
                 });
                 _d3dctxVLC.OutputMerger.SetRenderTargets(null, _textureVLCRenderTarget);
@@ -368,7 +370,7 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
             }
 
             // set the output config for VLC knows what to do
-            output.Union.DxgiFormat = (int)renderFormat;
+            output.Union.DxgiFormat = (int)_renderFormat;
             output.FullRange = true;
             output.ColorSpace = ColorSpace.BT709;
             output.ColorPrimaries = ColorPrimaries.BT709;
@@ -448,11 +450,11 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
         {
             if (enter)
             {
-                _d3dctxVLC.ClearRenderTargetView(_textureVLCRenderTarget, ColorBlack);
+                _d3dctxVLC.ClearRenderTargetView(_textureVLCRenderTarget, _colorBlack);
             }
             else
             {
-                _d3dctx.ClearRenderTargetView(_swapchainRenderTarget, ColorBlack);
+                _d3dctx.ClearRenderTargetView(_swapchainRenderTarget, _colorBlack);
                 _d3dctx.OutputMerger.SetRenderTargets(null, _swapchainRenderTarget);
                 _d3dctx.Rasterizer.SetViewport(0, 0, _outWidth, _outHeight);
                 _d3dctx.InputAssembler.InputLayout = null;
