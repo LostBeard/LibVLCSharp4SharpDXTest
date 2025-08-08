@@ -374,12 +374,16 @@ namespace LibVLCSharp.CustomRendering.Direct3D11
             output.ColorPrimaries = ColorPrimaries.BT709;
             output.TransferFunction = TransferFunction.SRGB;
 
-            // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation
-            // Setting to TopLeft = blank output
-            // Setting to Anything else = output shows... but sometimes horizontally mirrored content, sometimes yellowish, and resizing the form can cause a horizontal flip
-            output.Orientation = VideoOrientation.TopLeft;
 
-            // No matter 
+            // ISSUE #1 (likely related to issue #2)
+            // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation
+            // Setting to TopLeft (used in linked example code) = blank output
+            // Setting to Anything else = output shows... but sometimes horizontally flipped content, sometimes yellowish, and resizing the form can cause a horizontal flip
+            output.Orientation = VideoOrientation.BottomRight;
+
+
+            // ISSUE #2
+            // No matter the settings used here,
             // An exception is thrown after this method returns (usually a couple times, and again if resized)
             // "Microsoft Visual C++ Runtime Library" 
             // Assertion failed!
