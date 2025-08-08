@@ -3,7 +3,7 @@
 Test app using LibVLCSharp 4 pre-release and SharpDX to test the new DirectX 11 rendering callbacks in LibVLCSharp 4. 
 Based primarily on the first reference linked below, but this project uses the DirectX interop library [SharpDX](https://github.com/sharpdx/SharpDX) instead of [TerraFX](https://github.com/terrafx/terrafx.interop.windows).
 
-### References:  
+### References 
 - [LibVLCSharp.CustomRendering.Direct3D11](https://code.videolan.org/videolan/LibVLCSharp/-/blob/master/samples/LibVLCSharp.CustomRendering.Direct3D11/Program.cs)
 - [D3D11 Player C++](https://code.videolan.org/videolan/vlc/-/blob/e19dc449339e740a579d44e81ceed72ba56914e5/doc/libvlc/d3d11_player.cpp)
 
