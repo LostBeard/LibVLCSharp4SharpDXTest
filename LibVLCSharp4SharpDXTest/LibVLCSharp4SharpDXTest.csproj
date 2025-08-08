@@ -19,11 +19,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="LibVLCSharp" Version="4.0.0-alpha-20250807-9092" />
-		<PackageReference Include="LibVLCSharp.WinForms" Version="4.0.0-alpha-20250807-9092" />
+		<PackageReference Include="VideoLAN.LibVLC.Windows" Version="4.0.0-alpha-20250807" />
 		<PackageReference Include="SharpDX.D3DCompiler" Version="4.2.0" />
 		<PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
 		<PackageReference Include="SharpDX.DXGI" Version="4.2.0" />
-		<PackageReference Include="VideoLAN.LibVLC.Windows" Version="4.0.0-alpha-20250807" />
 	</ItemGroup>
 
 </Project>

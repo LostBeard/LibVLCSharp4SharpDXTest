@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
-using LibVLCSharp.WinForms;
 using static LibVLCSharp.MediaPlayer;
 using Device = SharpDX.Direct3D11.Device;
 using Device1 = SharpDX.Direct3D11.Device1;
