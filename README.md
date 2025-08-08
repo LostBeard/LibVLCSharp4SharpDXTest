@@ -67,7 +67,7 @@ unsafe static bool UpdateOutput(IntPtr opaque, RenderConfig* config, ref OutputC
         _d3dctxVLC.Rasterizer.SetViewport(0, 0, _textureWidth, _textureHeight);
     }
 
-    // set the output config for VLC knows what to do
+    // set the output config for VLC
     output.Union.DxgiFormat = (int)renderFormat;
     output.FullRange = true;
     output.ColorSpace = ColorSpace.BT709;
