@@ -74,14 +74,17 @@ unsafe static bool UpdateOutput(IntPtr opaque, RenderConfig* config, ref OutputC
 
 
     // ISSUE #1 (likely related to issue #2)
-    // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation, and causes unexpected results
+    // output.Orientation >> DOES NOT SEEM TO WORK AS EXPECTED >> Does not reliably affect output orientation, 
+    // and causes unexpected results
     // Setting to TopLeft (used in linked example code) = blank output
-    // Setting to Anything else = output shows... but sometimes horizontally flipped content, sometimes yellowish, and resizing the form can cause a horizontal flip
+    // Setting to Anything else = output shows... but sometimes horizontally flipped content, sometimes yellowish, 
+    //  and resizing the form can cause a horizontal flip
     output.Orientation = VideoOrientation.TopLeft;
 
 
     // ISSUE #2
-    // No matter the settings used here, an exception is thrown after this method returns (usually a couple times, and again if resized)
+    // No matter the settings used here, an exception is thrown after this method returns (usually a couple times, 
+    // and again if resized)
     // "Microsoft Visual C++ Runtime Library" 
     // Assertion failed!
     // Program: ...
